@@ -1,0 +1,27 @@
+﻿@model VehicleDetailViewModel
+
+@{
+    ViewData["Title"] = "Szczegóły pojazdu";
+}
+
+<h1 class="text-center">Szczegóły pojazdu</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card mb-3 shadow-sm">
+                <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Name" style="width: 200px; height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Name</h5>
+                    
+                    <p class="card-text">Typ: @Model.Type</p>
+                    <p class="card-text">Cena za 24h: @Model.PricePerHour zł</p>
+                    <p class="card-text">Opis: @Model.Description</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="@Url.Action("Index", "Vehicle")" class="btn btn-primary">Powrót do listy</a>
+            </div>
+        </div>
+    </div>
+</div>

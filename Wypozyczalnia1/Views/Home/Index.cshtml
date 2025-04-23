@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center mb-3">
+    <h1 class="display-4 ">UBB Wypożyczalnia Sprzętu Sportowego</h1>
+    <p>Witamy w naszej usłudze</p>
+   
+    
+    <<div class="row">
+        @foreach (var vehicle in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="@vehicle.ImageUrl" class="card-img-top" alt="@vehicle.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@vehicle.Name</h5>
+                        <a href="@Url.Action("Details", "Vehicle", new { id = vehicle.Id })" class="btn btn-primary">Szczegóły</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

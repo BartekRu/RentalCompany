@@ -1,0 +1,37 @@
+﻿
+@model List<VehicleItemViewModel>
+
+@{
+    ViewData["Title"] = "Lista pojazdów";
+}
+
+<h1 class="text-center">Lista pojazdów</h1>
+
+<div class="container">
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <p class="text-center">Brak pojazdów w bazie.</p>
+        }
+
+        @foreach (var vehicle in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-3 shadow-sm">
+                    <img src="@vehicle.ImageUrl" class="card-img-top" alt="@vehicle.Name" style="width: 200px; height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@vehicle.Name</h5>
+                        <p class="card-text">Typ: @vehicle.Type</p>
+                        <p class="card-text">Cena za godzinę: @vehicle.PricePerHour zł</p>
+                        <a href="@Url.Action("Details", "Vehicle", new { id = vehicle.Id })" class="btn btn-primary">Szczegóły</a>
+                        <a href="@Url.Action("Edit", "Vehicle", new { id = vehicle.Id })" class="btn btn-secondary">Edytuj</a>
+                        <a href="@Url.Action("Delete", "Vehicle", new { id = vehicle.Id })" class="btn btn-danger">Usuń</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="text-center mt-3">
+        <a href="@Url.Action("Create", "Vehicle")" class="btn btn-success">Dodaj nowy pojazd</a>
+    </div>
+</div>
